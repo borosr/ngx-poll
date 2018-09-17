@@ -1,6 +1,10 @@
 {
   "name": "ngx-poll",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/borosr/ngx-poll"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -48,5 +52,10 @@
     "tslint": "~5.9.1",
     "typescript": "~2.7.2"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "keywords": [
+    "ngx-poll",
+    "angular",
+    "poll"
+  ]
 }
