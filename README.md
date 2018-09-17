@@ -1,12 +1,28 @@
-# 				ngx-poll
+<h1 align="center">ngx-poll</h1>
 
-Simple polling component with two main options (yes/no) and one optional (stay). 
+<p align="center">
+    Simple polling component with two main options (yes/no) and one optional (stay). 
+</p>
+<p align="center">
+<a href="https://badge.fury.io/js/ngx-poll"><img src="https://badge.fury.io/js/ngx-poll.svg" alt="npm version" ></a>
+</p>
+
 
 ## Table of contents
 
-[TOC]
+1. [Installation instructions](#installation-instructions)
 
+2. [Documentation](#documentation)
 
+   [@Inputs](#@Inputs)
+
+   [@Outputs](#@Outputs)
+
+3. [Example](#example)
+
+   [Development server](#development-server)
+
+4. [License](#license)
 
 ## Installation instructions
 
@@ -80,8 +96,6 @@ export class AppComponent {
 | Name | Type |           Emited           |
 | :--: | :--: | :------------------------: |
 | send | void | When submit button clicked |
-
-
 
 ## Example
 
