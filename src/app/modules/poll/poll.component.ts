@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'ngx-poll',
-  templateUrl: './poll.component.html',
-  styleUrls: ['./poll.component.css']
+  templateUrl: './poll.component.html'
 })
 export class PollComponent implements OnInit {
 

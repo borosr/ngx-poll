@@ -10,7 +10,7 @@ import { PollModule } from './modules/poll/poll.module';
   ],
   imports: [
     BrowserModule,
-    PollModule,
+    PollModule
   ],
   providers: [],
   bootstrap: [AppComponent]
