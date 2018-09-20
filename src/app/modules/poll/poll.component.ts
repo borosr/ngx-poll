@@ -6,45 +6,49 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   template: `
 <ng-container *ngIf="dataLoaded;else notLoaded">
   <div class="container">
-    <div class="row"
-      *ngFor="let question of questions;let i = index">
-      <div class="col-md-8 col-12 text-center">{{ question.text }}</div>
-      <div class="col-md-4 col-12">
-        <div class="btn-group">
-          <label class="btn btn-primary"
-            [(ngModel)]="question.value"
-            btnRadio
-            [btnRadio]="primaryButtonValue"
-            tabindex="0"
-            name="{{ 'yes_btn_' + i }}"
-            role="button">{{ primaryButtonTitle }}</label>
-          <label class="btn btn-primary"
-            [(ngModel)]="question.value"
-            btnRadio
-            [btnRadio]="secondaryButtonValue"
-            tabindex="0"
-            name="{{ 'no_btn_' + i }}"
-            role="button">{{ secondaryButtonTitle }}</label>
-          <label class="btn btn-primary"
-            *ngIf="tertiaryButtonShow"
-            [(ngModel)]="question.value"
-            btnRadio
-            [btnRadio]="tertiaryButtonValue"
-            tabindex="0"
-            name="{{ 'stay_btn_' + i }}"
-            role="button">{{ tertiaryButtonTitle }}</label>
+    <ng-container *ngFor="let question of questions;let i = index">
+      <div class="row">
+        <div class="col-12">{{ question.text }}</div>
+        <div class="col-12">
+          <div class="btn-group">
+            <label class="btn btn-primary"
+              [(ngModel)]="question.value"
+              btnRadio
+              [disabled]="disabled"
+              [btnRadio]="primaryButtonValue"
+              tabindex="0"
+              name="{{ 'yes_btn_' + i }}"
+              role="button">{{ primaryButtonTitle }}</label>
+            <label class="btn btn-primary"
+              [(ngModel)]="question.value"
+              btnRadio
+              [disabled]="disabled"
+              [btnRadio]="secondaryButtonValue"
+              tabindex="0"
+              name="{{ 'no_btn_' + i }}"
+              role="button">{{ secondaryButtonTitle }}</label>
+            <label class="btn btn-primary"
+              *ngIf="tertiaryButtonShow"
+              [(ngModel)]="question.value"
+              btnRadio
+              [disabled]="disabled"
+              [btnRadio]="tertiaryButtonValue"
+              tabindex="0"
+              name="{{ 'stay_btn_' + i }}"
+              role="button">{{ tertiaryButtonTitle }}</label>
+          </div>
+        </div>
+        </div>
+        <hr />
+      </ng-container>
+      <div class="row mt-4">
+        <div class="col-12">
+          <button class="btn btn-success"
+          *ngIf="submitButtonShow"
+          (click)="sendData()">{{ submitButtonTitle }}</button>
         </div>
       </div>
     </div>
-    <div class="row mt-4">
-      <div class="col-md-8"></div>
-      <div class="col-md-4">
-        <button class="btn btn-success"
-          *ngIf="submitButtonShow"
-          (click)="sendData()">{{ submitButtonTitle }}</button>
-      </div>
-    </div>
-  </div>
 </ng-container>
 <ng-template #notLoaded>
   <div class="container">
@@ -68,6 +72,8 @@ export class PollComponent implements OnInit {
 
   @Input() submitButtonTitle: string = 'Send';
   @Input() submitButtonShow: boolean = false;
+
+  @Input() disabled: boolean = false;
 
   @Input() dataLoaded = true;
 
