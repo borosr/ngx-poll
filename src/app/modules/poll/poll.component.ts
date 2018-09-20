@@ -25,6 +25,14 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
             tabindex="0"
             name="{{ 'no_btn_' + i }}"
             role="button">{{ secondaryButtonTitle }}</label>
+          <label class="btn btn-primary"
+            *ngIf="tertiaryButtonShow"
+            [(ngModel)]="question.value"
+            btnRadio
+            [btnRadio]="tertiaryButtonValue"
+            tabindex="0"
+            name="{{ 'stay_btn_' + i }}"
+            role="button">{{ tertiaryButtonTitle }}</label>
         </div>
       </div>
     </div>
@@ -32,6 +40,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
       <div class="col-md-8"></div>
       <div class="col-md-4">
         <button class="btn btn-success"
+          *ngIf="submitButtonShow"
           (click)="sendData()">{{ submitButtonTitle }}</button>
       </div>
     </div>
@@ -53,7 +62,12 @@ export class PollComponent implements OnInit {
   @Input() secondaryButtonTitle: string = 'No';
   @Input() secondaryButtonValue: any = false;
 
+  @Input() tertiaryButtonShow: boolean = false;
+  @Input() tertiaryButtonTitle: string = 'Stay';
+  @Input() tertiaryButtonValue: any = null;
+
   @Input() submitButtonTitle: string = 'Send';
+  @Input() submitButtonShow: boolean = false;
 
   @Input() dataLoaded = true;
 
