@@ -6,6 +6,11 @@
 </div>
 <div>
   <ngx-poll [questions]="questions"
-    [tertiaryButtonShow]="true" [submitButtonShow]="true"></ngx-poll>
+    [tertiaryButtonShow]="true" 
+    [submitButtonShow]="true"
+    primaryButtonValue="yes"
+    secondaryButtonValue="no"
+    tertiaryButtonValue="maybe"
+    valueProperty="type"></ngx-poll>
 </div>
 <pre>{{ questions | json}}</pre>

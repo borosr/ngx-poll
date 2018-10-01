@@ -8,31 +8,34 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   <div class="container">
     <ng-container *ngFor="let question of questions;let i = index">
       <div class="row">
-        <div class="col-12">{{ question.text }}</div>
+        <div class="col-12">{{ question[textProperty] }}</div>
         <div class="col-12">
           <div class="btn-group">
             <label class="btn btn-primary"
-              [(ngModel)]="question.value"
+              [(ngModel)]="question[valueProperty]"
               btnRadio
               [disabled]="disabled"
               [btnRadio]="primaryButtonValue"
+              (click)="emitChange(question)"
               tabindex="0"
               name="{{ 'yes_btn_' + i }}"
               role="button">{{ primaryButtonTitle }}</label>
             <label class="btn btn-primary"
-              [(ngModel)]="question.value"
+              [(ngModel)]="question[valueProperty]"
               btnRadio
               [disabled]="disabled"
               [btnRadio]="secondaryButtonValue"
+              (click)="emitChange(question)"
               tabindex="0"
               name="{{ 'no_btn_' + i }}"
               role="button">{{ secondaryButtonTitle }}</label>
             <label class="btn btn-primary"
               *ngIf="tertiaryButtonShow"
-              [(ngModel)]="question.value"
+              [(ngModel)]="question[valueProperty]"
               btnRadio
               [disabled]="disabled"
               [btnRadio]="tertiaryButtonValue"
+              (click)="emitChange(question)"
               tabindex="0"
               name="{{ 'stay_btn_' + i }}"
               role="button">{{ tertiaryButtonTitle }}</label>
@@ -77,9 +80,12 @@ export class PollComponent implements OnInit {
 
   @Input() dataLoaded = true;
 
-  @Input('questions') questions: [{ text: string, value: any }];
+  @Input('questions') questions: any[];
+  @Input() textProperty = 'text';
+  @Input() valueProperty = 'value';
 
   @Output() send = new EventEmitter();
+  @Output() change = new EventEmitter<any>(); 
 
   constructor() { }
 
@@ -88,6 +94,10 @@ export class PollComponent implements OnInit {
 
   sendData() {
     this.send.emit();
+  }
+
+  emitChange(event: any) {
+    this.change.emit(event);
   }
 
 }

@@ -10,15 +10,18 @@ export class AppComponent {
 
   questions = [{
     text: 'Is it okay?',
-    value: null
+    id: 2,
+    type: 'maybe'
   },
   {
     text: 'Do you want a ball?',
-    value: null
+    id: 4,
+    type: 'yes'
   },
   {
     text: 'Yes or no?',
-    value: null
+    id: 6,
+    type: 'no'
   }]
 
   constructor() {
